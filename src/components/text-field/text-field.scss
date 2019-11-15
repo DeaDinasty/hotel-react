@@ -1,0 +1,54 @@
+@import '~styles/variables';
+
+.text-field-wrapper {
+  position: relative;
+  width: fit-content;
+}
+
+.text-field {
+  box-sizing: border-box;
+  width: 320px;
+  padding: 12px 14px;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid $dark-shade-25;
+  line-height: 18px;
+  color: $dark-shade-75;
+
+  &::placeholder {
+    color: $dark-shade-25;
+  }
+
+  &:hover, &:focus {
+    border-color: $dark-shade-50;
+    outline: none;
+  }
+
+  &_icon {
+    width: 266px;
+    padding-right: 58px;
+  }
+
+  &-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    color: linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &__icon {
+      background: linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: $purple;
+    }
+  }
+}

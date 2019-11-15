@@ -1,0 +1,100 @@
+@import '~reset-css/reset';
+@import '~normalize.css/normalize';
+@import './variables.scss';
+
+@font-face {
+  font-family: 'Quicksand-Bold';
+  src: local('Quicksand-Bold'),
+       url('/assets/fonts/Quicksand/Quicksand-Bold.ttf') format('truetype'), 
+       url('/assets/fonts/Quicksand/Quicksand-Bold.woff') format('woff'), 
+       url('/assets/fonts/Quicksand/Quicksand-Bold.svg') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: local('Montserrat-Bold'),
+       url('/assets/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype'), 
+       url('/assets/fonts/Montserrat/Montserrat-Bold.woff') format('woff'), 
+       url('/assets/fonts/Montserrat/Montserrat-Bold.svg') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: local('Montserrat-Regular'),
+       url('/assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype'), 
+       url('/assets/fonts/Montserrat/Montserrat-Regular.woff') format('woff'), 
+       url('/assets/fonts/Montserrat/Montserrat-Regular.svg') format('svg');
+	font-style: normal;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       url('/assets/fonts/MaterialIcons/MaterialIcons-Regular.ttf') format('truetype'), 
+       url('/assets/fonts/MaterialIcons/MaterialIcons-Regular.woff') format('woff'), 
+       url('/assets/fonts/MaterialIcons/MaterialIcons-Regular.svg') format('svg');
+	font-style: normal;
+}
+
+body {
+  // comment
+  font-family: 'Montserrat-Regular';
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba($dark-shade, .75);
+}
+
+h1, h2 {
+  font-family: 'Quicksand-Bold';
+  color: $dark-shade;
+}
+
+h1 {
+  line-height: 30px;
+  font-size: 24px;
+}
+
+h2 {
+  line-height: 24px;
+  font-size: 19px;
+}
+
+h3 {
+  font-family: 'Montserrat-Bold';
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: $dark-shade;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
