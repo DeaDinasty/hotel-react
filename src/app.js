@@ -1,11 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Button } from '~/components'
+import { DropdownList } from '~/components'
 import '~/styles/main.scss'
 
 const App = props => (
-  <Button text = {'click me'} type = {'nav'} />
+  <div>
+    <DropdownList 
+      defaultText = 'Сколько гостей' 
+      items = {[
+        {
+          text: 'спальни',
+          count: 2
+        },
+        {
+          text: 'кровати',
+          count: 2
+        },
+        {
+          text: 'ванные комнаты'
+        }
+      ]}
+      headerTextHelper = {null} 
+    />
+  </div>
 )
 
 App.propTypes = {

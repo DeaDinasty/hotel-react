@@ -1,0 +1,57 @@
+@import '~styles/variables';
+
+.dropdown-item {
+  display: flex;
+  margin-bottom: 7px;
+
+  &__text {
+    display: inline-block;
+    flex-grow: 1;
+    margin-right: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Montserrat-Bold';
+    color: $dark-shade;
+  }
+
+  &-count {
+    display: flex;
+
+    &__text {
+      font-size: 12px;
+      font-family: 'Montserrat-Bold';
+      color: $dark-shade;
+      line-height: 27px;
+      font-weight: bold;
+      margin: 0 12.5px;
+    }
+
+    &__decrease, &__increase {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      border-radius: 50%;
+      border: 1px solid $dark-shade-25;
+      background-color: white;
+      color: $dark-shade-50;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        opacity: 0.38;
+      }
+    }
+
+    &__decrease {
+      padding: 1px 3px 3px 3px;
+    }
+  }
+}

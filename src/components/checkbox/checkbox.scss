@@ -1,0 +1,53 @@
+@import '~styles/variables';
+
+.checkbox {
+  $self: &;
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin: 10px 0;
+  line-height: 18px;
+  color: $dark-shade-50;
+  cursor: pointer;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+
+    &:checked ~ #{$self}__checkmark {
+      border: 1px solid $purple;
+    }
+
+    &:checked ~ #{$self}__checkmark:after {
+      display: block;
+    }
+  }
+
+  &__checkmark {
+    box-sizing: border-box;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 1px solid $dark-shade-25;
+    border-radius: 4px;
+
+    &:after {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      display: none;
+      top: 3px;
+      left: 4px;
+      width: 10px;
+      height: 10px;
+      background-image: url('/assets/imgs/checkmark.svg');
+      background-size: cover;
+    }
+  }
+}
