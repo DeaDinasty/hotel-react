@@ -1,38 +1,42 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { amenitiesSelector } from '~/selectors/filters'
 import { DropdownList } from '~/components'
 
-const RoomAmenities = props => {
-  return (
-    <DropdownList
-      
-    >
+const amenitiesConstants = {
+  bedrooms: 'спальни',
+  beds: 'кровати',
+  bathrooms: 'ванные комнаты',
+  default: 'удобства в номере'
+}
 
-    </DropdownList>
-  )
-  }
-
-RoomAmenities.propTypes = {
+const amenitiesOrder = {
   
 }
 
-// use this unless redux not exist
-RoomAmenities.defaultProps = {
-  items: [   // room amenities items from redux (here while redux not exists)
-    {
-      text: 'спальни',
-      count: 2
-    },
-    {
-      text: 'кровати',
-      count: 2
-    },
-    {
-      text: 'ванные комнаты',
-      count: 0
-    }
-  ]
+// https://www.stefanjudis.com/today-i-learned/property-order-is-predictable-in-javascript-objects-since-es2015/
+// but not predictable if user not use es2015 and then i use this method for text
+
+const getHeaderText = (amenities) => {
+
 }
 
-export default RoomAmenities
+const RoomAmenities = ({ amenities }) => (
+  <DropdownList
+
+  >
+
+  </DropdownList>
+)
+
+RoomAmenities.propTypes = {
+  amenities: PropTypes.shape().isRequired
+}
+
+const mapStateToProps = (state) => ({
+  amenities: amenitiesSelector(state)
+})
+
+export default connect(mapStateToProps)(RoomAmenities)

@@ -1,0 +1,1 @@
+export { default as RoomAmenities } from './room-amenities'
