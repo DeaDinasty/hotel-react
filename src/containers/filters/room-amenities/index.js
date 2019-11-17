@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { amenitiesSelector } from '~/selectors/filters'
-import { changeAmenities } from '~/ac/filters'
-import { DropdownList, DropdownItem } from '~/components'
+import { DropdownList } from '~/components'
+import DropdownItem from './dropdown-item'
 
 const amenitiesConstants = {
   bedrooms: 'спальни',
@@ -19,28 +19,23 @@ const amenitiesConstants = {
 const getHeaderText = (amenities) => {
   const text = amenities.order.reduce((acc, value) => {
     if (amenities[value]) return `${acc}${amenities[value]} ${amenitiesConstants[value]}, `
-    else return acc
+    return acc
   }, '')
 
   if (text) return text.slice(0, -2)
   else return amenitiesConstants.default
 }
 
-const onChangeItem = (func, name) => (type) => () => func(name, type)
-
-const RoomAmenities = ({ amenities, changeAmenities }) => (
+const RoomAmenities = ({ amenities }) => (
   <DropdownList
     headerText = {getHeaderText(amenities)}
   >
     {
       amenities.order.map((value, index) => {
-        const onChange = onChangeItem(changeAmenities, value)
-
         return (
           <DropdownItem 
+            name = {value}
             text = {amenitiesConstants[value]} 
-            onIncrement = {onChange('TYPE::INCREMENT')}
-            onDecrement = {onChange('TYPE::DECREMENT')}
             key = {`dropdown-item${index}`} 
           />
         )
@@ -52,12 +47,11 @@ const RoomAmenities = ({ amenities, changeAmenities }) => (
 RoomAmenities.propTypes = {
   amenities: PropTypes.shape({
     order: PropTypes.arrayOf(PropTypes.string).isRequired
-  }).isRequired,
-  changeAmenities: PropTypes.func.isRequired
+  }).isRequired
 }
 
 const mapStateToProps = (state) => ({
   amenities: amenitiesSelector(state)
 })
 
-export default connect(mapStateToProps, { changeAmenities })(RoomAmenities)
+export default connect(mapStateToProps)(RoomAmenities)

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 
 import './dropdown-item.scss'
 
-const DropdownItem = ({ text, count = 0, onIncrement, onDecrement }) => (
+const DropdownItem = ({ text, count, onIncrement, onDecrement }) => (
   <li className = 'dropdown-item' >
-    {console.log('update')}
     <span className = 'dropdown-item__text'>
       {text}
     </span>
@@ -18,7 +17,7 @@ const DropdownItem = ({ text, count = 0, onIncrement, onDecrement }) => (
         {'-'}
       </button>
       <span className = 'dropdown-item-count__text'>
-        {count}
+        {count || 0}
       </span>
       <button 
         className = 'dropdown-item-count__increase'

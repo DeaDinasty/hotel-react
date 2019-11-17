@@ -4,10 +4,10 @@ export const changeDateRange = (dateRange) =>
     payload: { dateRange }
   })
 
-export const changeGuestsList = (guestslist) => 
+export const changeGuestsList = (name, type) => 
   ({
     type: 'FILTERS::CHANGE_GUESTS_LIST',
-    payload: { guestslist }
+    payload: { name, type }
   })
 
 export const changePriceRange = (priceRange) => 

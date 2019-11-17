@@ -23,12 +23,14 @@
     display: flex;
 
     &__text {
+      width: 30px;
+      text-align: center;
+      margin: 0 auto;
       font-size: 12px;
       font-family: 'Montserrat-Bold';
       color: $dark-shade;
       line-height: 27px;
       font-weight: bold;
-      margin: 0 12.5px;
     }
 
     &__decrease, &__increase {

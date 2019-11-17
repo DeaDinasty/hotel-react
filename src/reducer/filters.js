@@ -51,7 +51,17 @@ export default (filters = defaultFilters, action) => {
       return { ...filters, dateRange: payload.dateRange }
   
     case 'FILTERS::CHANGE_GUESTS_LIST':
-      return { ...filters, guestsList: payload.guestsList }
+      const newGuestsValue = changeWithIncrDecr(filters.guestsList[payload.name], payload.type)
+      
+      if (newGuestsValue === null) return filters
+
+      return { 
+        ...filters,
+        guestsList: {
+          ...filters.guestsList,
+          [payload.name]: newGuestsValue
+        }
+      }
   
     case 'FILTERS::CHANGE_PRICE_RANGE':
       return { ...filters, priceRange: payload.priceRange }
@@ -63,20 +73,17 @@ export default (filters = defaultFilters, action) => {
       return { ...filters, accessibility: payload.accessibility }
   
     case 'FILTERS::CHANGE_AMENITIES':
-      const { name, type } = payload
-      const newValue = changeWithIncrDecr(filters.amenities[name], type)
+      const newAmenitiesValue = changeWithIncrDecr(filters.amenities[payload.name], payload.type)
       
-      if (newValue === null) return filters
+      if (newAmenitiesValue === null) return filters
 
       return { 
         ...filters,
         amenities: {
           ...filters.amenities,
-          [name]: newValue
+          [payload.name]: newAmenitiesValue
         }
-
       }
-      return { ...filters, amenities: payload.amenities }
   
     case 'FILTERS::CHANGE_ADDITIONAL_AMENITIES':
       return { ...filters, additionalAmenities: payload.additionalAmenities }
