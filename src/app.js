@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { GuestsList } from '~/containers/filters'
+import { ToggleButton } from '~/components'
 import '~/styles/main.scss'
 
 const App = props => (
   <div>
-    <GuestsList />
+    <ToggleButton text = 'Получать спец предложения' id = 'text' />
   </div>
 )
 
