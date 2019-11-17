@@ -28,10 +28,10 @@ export const changeAccessibility = (accessibility) =>
     payload: { accessibility }
   })
 
-export const changeAmenities = (amenities) => 
+export const changeAmenities = (name, type) =>
   ({
     type: 'FILTERS::CHANGE_AMENITIES',
-    payload: { amenities }
+    payload: { name, type }
   })
 
 export const changeAdditionalAmenities = (additionalAmenities) => 

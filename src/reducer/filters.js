@@ -1,3 +1,5 @@
+import { changeWithIncrDecr } from './helper'
+
 const defaultFilters = {
   dateRange: {
     from: null,
@@ -6,7 +8,8 @@ const defaultFilters = {
   guestsList: {
     adults: null,
     children: null,
-    babies: null
+    babies: null,
+    order: ['adults', 'children', 'babies']
   },
   priceRange: {
     from: null,
@@ -15,16 +18,19 @@ const defaultFilters = {
   roomRules: {
     smoke: null,
     pets: null,
-    guests: null
+    guests: null,
+    order: ['smoke', 'pets', 'guests']
   },
   accessibility: {
     wideСorridor: null,
-    disabledAssistant: null
+    disabledAssistant: null,
+    order: ['wideСorridor', 'disabledAssistant']
   },
   amenities: {
     bedrooms: null,
     beds: null,
-    bathrooms: null
+    bathrooms: null,
+    order: ['bedrooms', 'beds', 'bathrooms']
   },
   additionalAmenities: {
     breakfast: null,
@@ -32,7 +38,8 @@ const defaultFilters = {
     feedingChair: null,
     crib: null,
     tv: null,
-    shampoo: null
+    shampoo: null,
+    order: ['breakfast', 'desk', 'feedingChair', 'crib', 'tv', 'shampoo']
   }
 }
 
@@ -56,6 +63,19 @@ export default (filters = defaultFilters, action) => {
       return { ...filters, accessibility: payload.accessibility }
   
     case 'FILTERS::CHANGE_AMENITIES':
+      const { name, type } = payload
+      const newValue = changeWithIncrDecr(filters.amenities[name], type)
+      
+      if (newValue === null) return filters
+
+      return { 
+        ...filters,
+        amenities: {
+          ...filters.amenities,
+          [name]: newValue
+        }
+
+      }
       return { ...filters, amenities: payload.amenities }
   
     case 'FILTERS::CHANGE_ADDITIONAL_AMENITIES':
