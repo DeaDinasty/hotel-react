@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { ToggleButton } from '~/components'
+import { LikeButton } from '~/components'
 import '~/styles/main.scss'
 
 const App = props => (
   <div>
-    <ToggleButton text = 'Получать спец предложения' id = 'text' />
+    <LikeButton count = {2} />
+    <LikeButton count = {12244} isLiked = {true} />
   </div>
 )
 
