@@ -3,9 +3,11 @@ import Nouislider from 'react-nouislider'
 import 'nouislider/distribute/nouislider.css'
 import PropTypes from 'prop-types'
 
+import { bigNumberSpace } from '~/utils'
 import './range-slider.scss'
 
-const getRangeText = (mask, selected) => `${selected[0]}${mask} - ${selected[1]}${mask}`
+const getRangeText = (mask, selected) => 
+  `${bigNumberSpace(selected[0])}${mask} - ${bigNumberSpace(selected[1])}${mask}`
 
 const RangeSlider = ({ name, legend, range, selected, mask = '', onChange }) => {
   const [rangeSelected, setRangeSelected] = useState(selected)
