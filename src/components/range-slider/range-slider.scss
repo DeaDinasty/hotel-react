@@ -1,0 +1,69 @@
+@import '~styles/variables';
+
+.range-slider {
+  position: relative;
+  width: 100%;
+  max-width: 266px;
+
+  .noUi-target {
+    top: 5px;
+    border: 1px solid $dark-shade-25;
+    border-radius: 3px;
+    box-shadow: none;
+    background: $background-color;
+    height: 6px;
+
+    .noUi-connect {
+      background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+      box-shadow: none;
+      margin: -1px 0;
+    }
+
+    .noUi-handle {
+      box-sizing: content-box;
+      left: -6px;
+      border: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow: none;
+      background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+      border: 2px solid #FFFFFF;
+
+      &:after{
+        display: none;
+      }
+
+      &:before{
+        display: none;
+      }
+    }
+  }
+
+  &-about {
+    display: flex;
+    align-items: center;
+
+    &__name {
+      text-transform: uppercase;
+      font-family: 'Montserrat-Bold';
+      color: $dark-shade;
+    }
+
+    &__range {
+      flex-grow: 1;
+      text-align: right;
+      color: $dark-shade-50;
+      font-size: 12px;
+      height: 14px;
+      line-height: 14px;
+    }
+  }
+
+  &__legend {
+    margin-top: 20px;
+    color: $dark-shade-50;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}

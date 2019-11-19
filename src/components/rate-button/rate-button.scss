@@ -1,0 +1,11 @@
+@import '~styles/variables';
+
+.rate-button {
+  &__icon {
+    cursor: pointer;
+    color: $purple;
+    background: linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

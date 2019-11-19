@@ -1,12 +1,11 @@
 import React from 'react'
 
-import { LikeButton } from '~/components'
+import { PriceRange } from '~/containers/filters'
 import '~/styles/main.scss'
 
 const App = props => (
   <div>
-    <LikeButton count = {2} />
-    <LikeButton count = {12244} isLiked = {true} />
+    <PriceRange />
   </div>
 )
 
