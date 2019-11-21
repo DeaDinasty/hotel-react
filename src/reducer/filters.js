@@ -1,4 +1,4 @@
-import { changeWithIncrDecr } from './helper'
+import { changeWithIncrDecr, applyChanges } from './helper'
 
 const defaultFilters = {
   dateRange: {
@@ -51,16 +51,15 @@ export default (filters = defaultFilters, action) => {
       return { ...filters, dateRange: payload.dateRange }
   
     case 'FILTERS::CHANGE_GUESTS_LIST':
-      const newGuestsValue = changeWithIncrDecr(filters.guestsList[payload.name], payload.type)
+      const newGuestsList = applyChanges(filters.guestsList, payload.guestsList)
+
+      if (newGuestsList === null) return filters
+      console.log('newGuestsList', newGuestsList);
       
-      if (newGuestsValue === null) return filters
 
       return { 
         ...filters,
-        guestsList: {
-          ...filters.guestsList,
-          [payload.name]: newGuestsValue
-        }
+        guestsList: newGuestsList
       }
   
     case 'FILTERS::CHANGE_PRICE_RANGE':

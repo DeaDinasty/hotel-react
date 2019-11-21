@@ -6,11 +6,12 @@ import { MaterialIcon } from '~/components'
 import './button.scss'
 
 // types = [simple(mod = [gray]), fill, hollow, nav]
-const Button = ({ text, type, mod }) => (
-  <button className = {classNames('button', 
+const Button = ({ text, type, mod, className, onClick }) => (
+  <button className = {classNames(className, 'button', 
     {[`button-${type}`]: type},
     {[`button-${type}_${mod}`]: mod}
     )}
+    onClick = {onClick}
   >
     {text}
     {type === 'nav' 
@@ -26,6 +27,8 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   mod: PropTypes.string,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 export default Button

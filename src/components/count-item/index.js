@@ -1,26 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './dropdown-item.scss'
+import './count-item.scss'
 
-const DropdownItem = ({ text, count, onIncrement, onDecrement }) => (
-  <li className = 'dropdown-item' >
-    <span className = 'dropdown-item__text'>
+const CountItem = ({ text, count, onIncrement, onDecrement }) => (
+  <li className = 'count-item' >
+    {console.log('rerender-count-item')}
+    <span className = 'count-item__text'>
       {text}
     </span>
-    <span className = 'dropdown-item-count'>
+    <span className = 'count-item-count'>
       <button 
-        className = {'dropdown-item-count__decrease'}
+        className = {'count-item-count__decrease'}
         onClick = {onDecrement}
         disabled = {!count} 
       >
         {'-'}
       </button>
-      <span className = 'dropdown-item-count__text'>
+      <span className = 'count-item-count__text'>
         {count || 0}
       </span>
       <button 
-        className = 'dropdown-item-count__increase'
+        className = 'count-item-count__increase'
         onClick = {onIncrement}
       >
         {'+'}
@@ -29,11 +30,11 @@ const DropdownItem = ({ text, count, onIncrement, onDecrement }) => (
   </li>
 )
 
-DropdownItem.propTypes = {
+CountItem.propTypes = {
   text: PropTypes.string.isRequired,
   count: PropTypes.number,
   onIncrement: PropTypes.func,
   onDecrement: PropTypes.func
 }
 
-export default DropdownItem
+export default CountItem

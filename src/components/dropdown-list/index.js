@@ -2,15 +2,16 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
-import { MaterialIcon } from '~/components'
+import { MaterialIcon, Button } from '~/components'
 import { useToggle } from '~/hooks'
 import './dropdown-list.scss'
 
 const DropdownList = ({ 
-  headerText,        // text when headerTextHelper is null or return null
-  helperButtons,     // when true => add clear and apply buttons
-  isExpanded = true, // expanded state (default true)
-  className,         // spec style (in my case is width)
+  headerText,          // text when headerTextHelper is null or return null
+  onClear,
+  onApply,
+  isExpanded = false,  // expanded state (default true)
+  className,          // spec style (in my case is width)
   children
 }) => {
   const { isOpen, toggleOpen } = useToggle(isExpanded)
@@ -30,9 +31,21 @@ const DropdownList = ({
       (
         <ul className = 'dropdown-body'>
           { children }
-          { helperButtons && (
-            <div>
-              
+          { (onClear || onApply) && (
+            <div className = {onClear ? 'dropdown-body-helper' : 'dropdown-body-helper_apply'}>
+              {onClear && 
+                <Button 
+                  type = 'simple'
+                  mod = 'grey'
+                  text = {'очистить'}
+                  onClick = {onClear}
+                />
+              }
+              <Button 
+                type = 'simple'
+                text = 'применить'
+                onClick = {onApply}
+              />
             </div>
           )}
       </ul>
@@ -44,8 +57,9 @@ const DropdownList = ({
 
 DropdownList.propTypes = {
   headerText: PropTypes.string.isRequired,
-  helperButtons: PropTypes.bool,
   isExpanded: PropTypes.bool,
+  onClear: PropTypes.func,
+  onApply: PropTypes.func,
   className: PropTypes.string
 }
 
