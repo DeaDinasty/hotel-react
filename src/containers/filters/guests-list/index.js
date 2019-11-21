@@ -1,11 +1,11 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useCallback, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { useComponentVisible as useComponentIsActive } from '~/hooks'
 import { changeGuestsList } from '~/ac/filters'
 import { guestsListSelector } from '~/selectors/filters'
-import { DropdownList } from '~/components'
-import DropdownItem from './dropdown-item'
+import { Dropdown, CountItem } from '~/components'
 
 const guestsConstants = {
   name1: 'гость',
@@ -32,17 +32,32 @@ const getHeaderText = (guests) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'TYPE::CHANGE': 
+    case 'TYPE::INCREMENT': 
+      if (state[action.payload] === 99) return state
+
       return {
         ...state,
-        [action.name]: action.payload
+        [action.payload]: state[action.payload] + 1
       }
+    case 'TYPE::DECREMENT': 
+      if (state[action.payload] === 0) return state
+
+      return {
+        ...state,
+        [action.payload]: state[action.payload] - 1
+      }
+    case 'TYPE::RESET': 
+      return action.payload
+
     default: return state
   }
 }
 
 const GuestsList = ({ guests, changeGuestsList }) => {
   const [state, dispatch] = useReducer(reducer, guests)
+  const { ref, isComponentVisible: isOpen, setIsComponentVisible: setIsOpen } = useComponentIsActive(false)
+  const headerText = getHeaderText(state)
+
   const handleClear = () => {
     const newGuestsList = guests.order.reduce((acc, value) => ({
       ...acc,
@@ -52,26 +67,34 @@ const GuestsList = ({ guests, changeGuestsList }) => {
     changeGuestsList(newGuestsList)
   }
 
+  useEffect(() => {
+    dispatch({type: 'TYPE::RESET', payload: guests})
+  }, [guests, isOpen])
+
   return (
-    <DropdownList 
-      headerText = {getHeaderText(state) || guestsConstants.default}
+    <Dropdown
+      headerText = {headerText || guestsConstants.default}
+      isOpen = {isOpen}
       onApply= {() => changeGuestsList(state)}
-      onClear = {handleClear}
+      onClear = {headerText ? handleClear : null}
+      onOpen = {() => setIsOpen(!isOpen)}
       className = {'dropdown_big'}
+      ref = {ref}
     >
       {
         guests.order.map((value, index) => {
           return (
-            <DropdownItem 
-              name = {value}
+            <CountItem 
+              count = {state[value]}
               text = {guestsConstants[value]} 
+              onIncrement = {useCallback(() => dispatch({type: 'TYPE::INCREMENT', payload: value}), [])}
+              onDecrement = {useCallback(() => dispatch({type: 'TYPE::DECREMENT', payload: value}), [])}
               key = {`dropdown-item${index}`} 
-              onChange = {dispatch}
             />
           )
         })
       }
-    </DropdownList>
+    </Dropdown>
   )
 }
 

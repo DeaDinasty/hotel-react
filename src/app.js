@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { GuestsList } from '~/containers/filters'
+import { RoomAmenities } from '~/containers/filters'
 import '~/styles/main.scss'
 
 const App = props => (
   <div>
-    <GuestsList />
+    <RoomAmenities />
   </div>
 )
 

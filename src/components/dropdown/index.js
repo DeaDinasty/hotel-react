@@ -3,24 +3,26 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 import { MaterialIcon, Button } from '~/components'
-import { useToggle } from '~/hooks'
-import './dropdown-list.scss'
+import './dropdown.scss'
 
-const DropdownList = ({ 
+const DropdownList = React.forwardRef(({
   headerText,          // text when headerTextHelper is null or return null
-  onClear,
-  onApply,
-  isExpanded = false,  // expanded state (default true)
-  className,          // spec style (in my case is width)
-  children
-}) => {
-  const { isOpen, toggleOpen } = useToggle(isExpanded)
+  onClear,             // clear button event
+  onApply,             // apply button event
+  onOpen,              // change open state when click on on header
+  isOpen = false,      // expanded state (default false)
+  className,           // spec style (in my case is width)
+  children,
+}, ref) => {
 
   return (
-    <div className = {classNames('dropdown', {'dropdown_active': isOpen}, {className: className})}>
+    <div 
+      className = {classNames('dropdown', {'dropdown_active': isOpen}, {className: className})}
+      ref = {ref}
+    >
       <div 
         className="dropdown-header"
-        onClick = {toggleOpen}
+        onClick = {onOpen}
       >
         <span className = 'dropdown-header__text'>
           {headerText}
@@ -53,11 +55,12 @@ const DropdownList = ({
       : null}
     </div>
   )
-}
+})
 
 DropdownList.propTypes = {
   headerText: PropTypes.string.isRequired,
-  isExpanded: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  onOpen: PropTypes.func,
   onClear: PropTypes.func,
   onApply: PropTypes.func,
   className: PropTypes.string

@@ -54,8 +54,6 @@ export default (filters = defaultFilters, action) => {
       const newGuestsList = applyChanges(filters.guestsList, payload.guestsList)
 
       if (newGuestsList === null) return filters
-      console.log('newGuestsList', newGuestsList);
-      
 
       return { 
         ...filters,
