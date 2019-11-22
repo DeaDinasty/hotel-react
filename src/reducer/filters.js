@@ -83,7 +83,17 @@ export default (filters = defaultFilters, action) => {
       }
   
     case 'FILTERS::CHANGE_ADDITIONAL_AMENITIES':
-      return { ...filters, additionalAmenities: payload.additionalAmenities }
+      const newAdditionalAmenityValue = 
+        typeof filters.additionalAmenities[payload.name] !== 'boolean' 
+          ? true 
+          : !filters.additionalAmenities[payload.name]
+
+      return { ...filters, 
+        additionalAmenities: {
+          ...filters.additionalAmenities,
+          [payload.name]: newAdditionalAmenityValue
+        } 
+      }
   
     default:
       return filters

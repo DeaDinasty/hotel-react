@@ -34,8 +34,8 @@ export const changeAmenities = (name, type) =>
     payload: { name, type }
   })
 
-export const changeAdditionalAmenities = (additionalAmenities) => 
+export const changeAdditionalAmenities = (name) => 
   ({
     type: 'FILTERS::CHANGE_ADDITIONAL_AMENITIES',
-    payload: { additionalAmenities }
+    payload: { name }
   })

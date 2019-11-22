@@ -5,5 +5,3 @@ export const roomRulesSelector = (state) => state.filters.roomRules
 export const accessibilitySelector = (state) => state.filters.accessibility
 export const amenitiesSelector = (state) => state.filters.amenities
 export const additionalAmenitiesSelector = (state) => state.filters.additionalAmenities
-
-export const amenitiesFieldSelector = (state, name) => state.filters.amenities[name]

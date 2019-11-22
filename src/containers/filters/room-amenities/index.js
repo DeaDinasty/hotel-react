@@ -38,17 +38,15 @@ const RoomAmenities = ({ amenities, changeAmenities }) => {
       ref = {ref}
     >
       {
-        amenities.order.map((value, index) => {
-          return (
-            <CountItem 
-              count = {amenities[value]}
-              text = {amenitiesConstants[value]} 
-              onIncrement = {useCallback(() => changeAmenities(value, 'TYPE::INCREMENT'), [])}
-              onDecrement = {useCallback(() => changeAmenities(value, 'TYPE::DECREMENT'), [])}
-              key = {`dropdown-item${index}`} 
-            />
-          )
-        })
+        amenities.order.map((value, index) => (
+          <CountItem 
+            count = {amenities[value]}
+            text = {amenitiesConstants[value]} 
+            onIncrement = {useCallback(() => changeAmenities(value, 'TYPE::INCREMENT'), [])}
+            onDecrement = {useCallback(() => changeAmenities(value, 'TYPE::DECREMENT'), [])}
+            key = {`dropdown-item${index}`} 
+          />
+        ))
       }
     </Dropdown>
   )
