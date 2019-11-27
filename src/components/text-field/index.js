@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { MaterialIcon } from '~/components'
 import './text-field.scss'
 
-const TextField = ({ placeholder, icon, date_mask }) => {
+const TextField = ({ placeholder, icon, date_mask, onSubmit }) => {
   if (date_mask) {
     return (
       <MaskedInput 
@@ -31,7 +31,10 @@ const TextField = ({ placeholder, icon, date_mask }) => {
     else return (
       <div className = 'text-field-wrapper'>
         {tf}
-        <button className = 'text-field-button'>
+        <button 
+          className = 'text-field-button'
+          onClick = {onSubmit}
+        >
           <MaterialIcon icon = {'arrow_forward'} className = {'text-field-button__icon'} />
         </button>
       </div>
@@ -42,7 +45,8 @@ const TextField = ({ placeholder, icon, date_mask }) => {
 TextField.propTypes = {
   placeholder: PropTypes.string,
   mask: PropTypes.string,
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  onSubmit: PropTypes.func
 }
 
 export default TextField

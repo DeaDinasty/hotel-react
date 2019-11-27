@@ -1,11 +1,16 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 
-import { AdditionalRoomAmenities } from '~/containers/filters'
+import { Header, Footer } from '~/components'
+import { LandingPage, Auth } from '~/pages'
 import '~/styles/main.scss'
 
 const App = props => (
   <div>
-    <AdditionalRoomAmenities />
+    <Header />
+    <Route exact path = '/' component = {LandingPage} />
+    <Route exact path = {['/login', '/register']} component = {Auth} />
+    <Footer />
   </div>
 )
 

@@ -2,15 +2,15 @@
 
 .button {
   $border-radius: 22px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0 20px 2px 20px;
 
   border: none;
   font-size: 12px;
-  line-height: 15px;
   font-family: 'Montserrat-Bold';
   font-weight: bold;
-  height: 44px;
   border-radius: $border-radius;
-  padding: 15px 20px;
   text-transform: uppercase;
   background-color: transparent;
   cursor: pointer;
@@ -50,7 +50,7 @@
       right: 0;
       top: 0;
       width: 44px;
-      height: 44px;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -60,7 +60,6 @@
   &-hollow {
     color: $purple;
     border-radius: $border-radius;
-    padding: 13px 18px;
     border: solid 2px transparent;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
     background-origin: border-box;

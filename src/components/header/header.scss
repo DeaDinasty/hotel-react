@@ -1,0 +1,60 @@
+@import '~styles/variables';
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px 9.722%;
+  background: $background-color;
+  box-shadow: 0px 10px 20px rgba($dark-shade, 0.05);
+
+  &__login-button {
+    padding: 0 18px 2px 18px;
+  }
+}
+
+.header-nav {
+  flex-grow: 1;
+
+  @media (max-width: $screen-lg) {
+    display: none;
+  }
+
+  &__list {
+    justify-content: flex-end;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__list-item {
+    margin: 0 10px;
+  }
+}
+
+.header-noauth, .header-user {
+  margin-left: 10px;
+
+  @media (max-width: $screen-lg) {
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+}
+
+.header-noauth {
+  display: flex;
+  height: 34px;
+
+  & > *:first-child {
+    margin-right: 20px;
+  }
+}
+
+.header-user {
+  padding-left: 20px;
+  border-style: solid;
+  border-width: 0 0 0 1px;
+  border-color: rgba($dark-shade, .1);
+}

@@ -1,0 +1,89 @@
+@import '~styles/variables';
+
+.footer {
+  box-sizing: border-box;
+  width: 100%;
+  box-shadow: 0px 10px 20px rgba($dark-shade, 0.05);
+}
+
+.footer-body {
+  display: flex;
+  justify-content: space-between;
+  padding: 100px 9.722%;
+
+  @media (max-width: $screen-xl) {
+    justify-content: center;
+  }
+
+  &_simple {
+
+  }
+}
+
+.footer-copyright {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: 0px -1px 0px rgba($dark-shade, 0.1);
+  padding: 0 9.722%;
+  height: 70px;
+
+  &__text {
+    flex-grow: 1;
+  }
+
+  &__icon {
+    cursor: pointer;
+    margin: 0 10px;
+    color: $purple;
+    background: linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media (max-width: $screen-xl) {
+    display: none;
+  }
+}
+
+.footer-company, .footer-subscribe {
+  max-width: 260px;
+
+  & > * {
+    margin-bottom: 20px;
+  }
+}
+
+.footer-company {
+
+  @media (max-width: $screen-xl) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 560px;
+  }
+}
+
+.footer-soc {
+  display: none;
+
+  @media (max-width: $screen-xl) {
+    display: block;
+  }
+}
+
+.footer-subscribe {
+  @media (max-width: $screen-xl) {
+    display: none;
+  }
+}
+
+.footer-nav {
+  &__item {
+    margin: 20px 0;
+  }
+
+  @media (max-width: $screen-xl) {
+    display: none;
+  }
+}

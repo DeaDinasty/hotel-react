@@ -62,9 +62,14 @@ const GuestsList = ({ guests, changeGuestsList }) => {
     const newGuestsList = guests.order.reduce((acc, value) => ({
       ...acc,
       [value]: null
-    }), {})
+    }), {order: guests.order})
 
-    changeGuestsList(newGuestsList)
+    dispatch({type: 'TYPE::RESET', payload: newGuestsList})
+  }
+
+  const onApply = () => {
+    changeGuestsList(state)
+    setIsOpen(prevState => !prevState)
   }
 
   useEffect(() => {
@@ -75,7 +80,7 @@ const GuestsList = ({ guests, changeGuestsList }) => {
     <Dropdown
       headerText = {headerText || guestsConstants.default}
       isOpen = {isOpen}
-      onApply= {() => changeGuestsList(state)}
+      onApply= {onApply}
       onClear = {headerText ? handleClear : null}
       onOpen = {() => setIsOpen(!isOpen)}
       className = {'dropdown_big'}

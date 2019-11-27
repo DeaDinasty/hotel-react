@@ -1,0 +1,31 @@
+@import '~styles/variables';
+
+.icon-text {
+  display: flex;
+  padding-bottom: 15px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: rgba($dark-shade, .1);
+
+  &__icon {
+    font-size: 48px !important;
+    color: $purple;
+    background: linear-gradient(180deg, $purple 0%, #8BA4F9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+
+    &__text {
+      font-family: 'Montserrat-Bold';
+    }
+
+    &__richText {
+
+    }
+  }
+}

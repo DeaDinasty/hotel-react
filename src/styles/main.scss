@@ -42,8 +42,18 @@
 	font-style: normal;
 }
 
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: local('Font Awesome 5 Brands'),
+    url('/assets/fonts/FontAwesome-Brand/fa-brands-400.ttf') format('truetype'),
+    url('/assets/fonts/FontAwesome-Brand/fa-brands-400.woff') format('woff'),
+    url('/assets/fonts/FontAwesome-Brand/fa-brands-400.svg#fontawesome') format('svg');
+}
+
 body {
-  // comment
   font-family: 'Montserrat-Regular';
   font-weight: normal;
   font-size: 14px;
@@ -52,7 +62,9 @@ body {
 }
 
 h1, h2 {
-  font-family: 'Quicksand-Bold';
+  font-family: 'Quicksand-Bold', 'Open Sans';
+  line-height: 30px;
+  font-weight: bold;
   color: $dark-shade;
 }
 
@@ -72,6 +84,11 @@ h3 {
   line-height: 15px;
   text-transform: uppercase;
   color: $dark-shade;
+}
+
+.fab {
+  font-family: 'Font Awesome 5 Brands';
+  font-size: 24px;  /* Preferred icon size */
 }
 
 .material-icons {

@@ -1,0 +1,29 @@
+@import '~styles/variables';
+
+.bullet-list {
+  &__header {
+    text-transform: uppercase;
+    font-family: 'Montserrat-Bold';
+    font-size: 12px;
+    color: $dark-shade;
+  }
+
+  &-body {
+    &__item {
+      position: relative;
+      padding-left: 25px;
+      line-height: 24px;
+
+      &:before {
+        content: '\2022';
+        position: absolute;
+        left: 20px;
+        margin-left: -20px;
+        display: inline-block;
+        font-size: 60px;
+        color: $dark-shade-25;
+        line-height: 16px;
+      }
+    }
+  }
+}

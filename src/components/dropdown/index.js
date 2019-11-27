@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { MaterialIcon, Button } from '~/components'
 import './dropdown.scss'
 
-const DropdownList = React.forwardRef(({
+const Dropdown = React.forwardRef(({
   headerText,          // text when headerTextHelper is null or return null
   onClear,             // clear button event
   onApply,             // apply button event
@@ -17,7 +17,7 @@ const DropdownList = React.forwardRef(({
 
   return (
     <div 
-      className = {classNames('dropdown', {'dropdown_active': isOpen}, {className: className})}
+      className = {classNames('dropdown', {'dropdown_active': isOpen}, className)}
       ref = {ref}
     >
       <div 
@@ -29,7 +29,7 @@ const DropdownList = React.forwardRef(({
         </span>
         <MaterialIcon icon = {'expand_more'} className = {'dropdown-header__icon'} />
       </div>
-      {isOpen ? 
+      {isOpen && children ? 
       (
         <ul className = 'dropdown-body'>
           { children }
@@ -57,7 +57,7 @@ const DropdownList = React.forwardRef(({
   )
 })
 
-DropdownList.propTypes = {
+Dropdown.propTypes = {
   headerText: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
   onOpen: PropTypes.func,
@@ -66,4 +66,4 @@ DropdownList.propTypes = {
   className: PropTypes.string
 }
 
-export default DropdownList
+export default Dropdown

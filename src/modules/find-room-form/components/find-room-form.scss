@@ -1,0 +1,39 @@
+@import '~styles/variables';
+
+.find-room {
+  &__legend {
+    text-transform: uppercase;
+    font-family: 'Montserrat-Bold';
+    font-size: 12px;
+    line-height: 15px;
+    color: $dark-shade;
+    margin-bottom: 5px;
+  }
+
+  &__header {
+    margin: 0 0 20px 0;
+  }
+
+  &__submit {
+    margin-top: 30px;
+    height: 44px;
+  }
+}
+
+.find-room-time {
+  display: flex;
+  justify-content: space-between;
+
+  &__date {
+    max-width: 150px;
+  }
+}
+
+.find-room-guests {
+  margin-top: 20px;
+}
+
+.find-room-item {
+  width: 100%;
+  max-width: 150px;
+}

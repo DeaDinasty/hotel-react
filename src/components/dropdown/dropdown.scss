@@ -14,11 +14,12 @@
   }
 
   &_big {
-    #{$self}-header {
-      max-width: 320px;
-    }
+    max-width: 320px;
+  }
 
+  &_big-body {
     #{$self}-body {
+      width: 320px;
       max-width: 320px;
     }
   }
@@ -26,7 +27,7 @@
   &-header {
     box-sizing: border-box;
     width: 100%;
-    padding: 9px 90px 9px 14px;
+    padding: 9px 32px 9px 14px;
     border: 1px solid $dark-shade-25;
     border-radius: 2px 2px 0 0;
     cursor: pointer;
@@ -48,6 +49,10 @@
   }
 
   &-body {
+    z-index: 1;
+    background-color: $background-color;
+    position: absolute;
+    top: 100%;
     box-sizing: border-box;
     width: 100%;
     border: 1px solid $dark-shade-50;
