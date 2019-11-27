@@ -21,6 +21,8 @@
     #{$self}-body {
       width: 320px;
       max-width: 320px;
+      top: calc(100% + 4px);
+      border-radius: 2px;
     }
   }
 
@@ -52,13 +54,13 @@
     z-index: 1;
     background-color: $background-color;
     position: absolute;
-    top: 100%;
+    top: calc(100% - 1px);
     box-sizing: border-box;
     width: 100%;
     border: 1px solid $dark-shade-50;
     border-radius: 0 0 2px 2px;
-    border-width: 0 1px 1px 1px;
-    padding: 6px 6px 0 14px;
+    border-width: 1px;
+    padding: 6px 6px 20px 14px;
 
     &-helper {
       display: flex;

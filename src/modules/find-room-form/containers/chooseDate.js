@@ -24,9 +24,7 @@ const getDropdownText = (date) => {
 
 const ChooseDate = ({ date_range, changeDateRange }) => {
   const [dateRange, setDateRange] = useState(date_range)
-  const { ref, isComponentVisible: isOpen, setIsComponentVisible: setIsOpen } = useComponentIsActive(false)
-  console.log(isOpen);
-  
+  const { ref, isComponentVisible: isOpen, setIsComponentVisible: setIsOpen } = useComponentIsActive(false, false, 2)
 
   const arrivalDropdownText = getDropdownText(dateRange.from)
   const departureDropdownText = getDropdownText(dateRange.to)
@@ -56,11 +54,11 @@ const ChooseDate = ({ date_range, changeDateRange }) => {
         <Dropdown 
           headerText = {arrivalDropdownText || CHOOSE_DATE_CONSTANTS.default}
           isOpen = {isOpen}
-          onOpen = {setIsOpen(prevState => !prevState)}
+          onOpen = {() => setIsOpen(!isOpen)}
           onApply = {onApply}
           onClear = {arrivalDropdownText || departureDropdownText ? handleClear : null}
           className = 'find-room-time__date dropdown_big-body'
-          ref = {ref}
+          ref = {ref[0]}
         >
           <Calendar 
             selectedDays = {dateRange}
@@ -75,8 +73,9 @@ const ChooseDate = ({ date_range, changeDateRange }) => {
         <Dropdown 
           headerText = {departureDropdownText || CHOOSE_DATE_CONSTANTS.default}
           isOpen = {isOpen}
-          onOpen = {}
+          onOpen = {() => setIsOpen(!isOpen)}
           className = 'find-room-time__date'
+          ref = {ref[1]}
         />
       </div>
     </div>
